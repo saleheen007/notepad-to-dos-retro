@@ -6,7 +6,7 @@ import { Task, Category } from '@/lib/data';
 import TaskItem from './TaskItem';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Calendar, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ConfettiEffect from './ConfettiEffect';
 
