@@ -2,16 +2,19 @@
 import React, { useRef } from 'react';
 import { Task } from '@/lib/data';
 import { useDrag, useDrop } from 'react-dnd';
-import { Check, Calendar } from 'lucide-react';
+import { Check, Calendar, Trash2 } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import { cn } from "@/lib/utils";
 
 interface TaskItemProps {
   task: Task;
   index: number;
   moveTask: (dragIndex: number, hoverIndex: number) => void;
   toggleTaskComplete: (taskId: string) => void;
+  deleteTask: (taskId: string) => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, index, moveTask, toggleTaskComplete }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ task, index, moveTask, toggleTaskComplete, deleteTask }) => {
   const ref = useRef<HTMLDivElement>(null);
   
   // Set up drag functionality
@@ -82,18 +85,27 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, index, moveTask, toggleTaskCo
   return (
     <div 
       ref={ref}
-      className={`p-3 mb-2 border-b border-notepad-line flex items-center gap-3 transition-opacity ${
-        isDragging ? 'opacity-40' : 'opacity-100'
-      } ${task.completed ? 'task-completed' : ''}`}
+      className={cn(
+        "p-3 mb-2 border-b border-notepad-line flex items-center gap-3 transition-opacity",
+        isDragging ? "opacity-40" : "opacity-100",
+        task.completed ? "task-completed" : ""
+      )}
       style={{ cursor: 'move' }}
     >
-      <div className="flex items-center">
-        <input
-          type="checkbox"
-          checked={task.completed}
-          onChange={() => toggleTaskComplete(task.id)}
-          className="retro-checkbox"
-        />
+      <div className="relative flex-shrink-0">
+        <div 
+          className={cn(
+            "retro-checkbox-container",
+            task.completed ? "retro-checkbox-checked" : ""
+          )}
+          onClick={() => toggleTaskComplete(task.id)}
+        >
+          <div className="retro-checkbox">
+            {task.completed && (
+              <Check size={12} className="text-notepad-ink absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+            )}
+          </div>
+        </div>
       </div>
       
       <div className="flex-1">
@@ -106,6 +118,14 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, index, moveTask, toggleTaskCo
           </div>
         )}
       </div>
+
+      <button
+        onClick={() => deleteTask(task.id)}
+        className="text-notepad-dark hover:text-red-500 transition-colors p-1 rounded-md hover:bg-notepad-paper"
+        title="Delete task"
+      >
+        <Trash2 size={16} />
+      </button>
     </div>
   );
 };

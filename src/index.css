@@ -135,18 +135,31 @@
     background-position: bottom;
   }
   
-  /* Special checkbox styling */
+  /* New retro checkbox styling */
+  .retro-checkbox-container {
+    @apply relative cursor-pointer w-5 h-5;
+    display: inline-block;
+  }
+  
   .retro-checkbox {
-    @apply w-5 h-5 bg-notepad-paper border border-notepad-ink rounded-none cursor-pointer relative;
+    @apply relative w-5 h-5 bg-notepad-paper border-2 border-notepad-ink rounded-none;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
   }
   
-  .retro-checkbox:checked {
+  .retro-checkbox-container:hover .retro-checkbox {
+    @apply border-notepad-dark bg-notepad-accent;
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .retro-checkbox-container:active .retro-checkbox {
+    transform: translate(0, 0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .retro-checkbox-checked .retro-checkbox {
     @apply bg-notepad-accent;
-  }
-  
-  .retro-checkbox:checked::after {
-    content: "✓";
-    @apply absolute top-[-1px] left-[3px] text-notepad-ink font-bold;
   }
   
   /* Task completed styling */

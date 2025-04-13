@@ -76,6 +76,22 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, category, updateTasks }) => 
     updateTasks(newTasks);
   };
   
+  // Delete a task
+  const deleteTask = (taskId: string) => {
+    const taskIndex = tasks.findIndex(t => t.id === taskId);
+    if (taskIndex === -1) return;
+    
+    const taskToDelete = tasks[taskIndex];
+    const newTasks = tasks.filter(t => t.id !== taskId);
+    
+    updateTasks(newTasks);
+    
+    toast({
+      title: "Task deleted",
+      description: `"${taskToDelete.title}" has been removed.`,
+    });
+  };
+  
   // Add a new task
   const addNewTask = () => {
     if (!newTaskTitle.trim()) return;
@@ -136,6 +152,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, category, updateTasks }) => 
               index={index}
               moveTask={moveTask}
               toggleTaskComplete={toggleTaskComplete}
+              deleteTask={deleteTask}
             />
           ))}
           
