@@ -36,36 +36,36 @@
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 240 10% 3.9%;
     --foreground: 210 40% 98%;
  
-    --card: 222.2 84% 4.9%;
+    --card: 240 5.9% 10%;
     --card-foreground: 210 40% 98%;
  
-    --popover: 222.2 84% 4.9%;
+    --popover: 240 5.9% 10%;
     --popover-foreground: 210 40% 98%;
  
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 240 5.9% 90%;
+    --primary-foreground: 240 10% 3.9%;
  
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 210 40% 98%;
  
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 240 3.7% 15.9%;
     --muted-foreground: 215 20.2% 65.1%;
  
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 240 3.7% 15.9%;
     --accent-foreground: 210 40% 98%;
  
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 3.7% 20%;
+    --input: 240 3.7% 20%;
+    --ring: 240 4.9% 83.9%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -75,9 +75,7 @@
   }
 }
 
-/* Custom theme styles for the notepad app */
 @layer components {
-  /* Color variables for the notepad theme */
   :root {
     --notepad-paper: #f8f4e5;
     --notepad-line: #c2bfb5;
@@ -86,12 +84,10 @@
     --notepad-accent: #f3d250;
   }
   
-  /* General notepad paper background and font */
   .notepad-paper {
     @apply bg-[var(--notepad-paper)] text-[var(--notepad-ink)] font-serif;
   }
   
-  /* Torn edge effect for the notepad */
   .torn-edge {
     position: relative;
     padding: 2rem;
@@ -103,9 +99,9 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: 20px; /* Adjust height for the size of the torn effect */
+    height: 20px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20'%3E%3Cpath d='M0,10c100,3.3,200,6.7,300,8,400,4,500-2.7,600-8,700-5.3,800-12,1200-10v10H0V10z' fill='%23f8f4e5'/%3E%3C/svg%3E");
-    background-size: 1200px 20px; /* Adjust size to control the density of the torn effect */
+    background-size: 1200px 20px;
   }
   
   .torn-edge::before {
@@ -117,7 +113,6 @@
     transform: rotate(180deg);
   }
   
-  /* New retro checkbox styling */
   .retro-checkbox-container {
     @apply relative cursor-pointer w-5 h-5;
     display: inline-block;
@@ -144,13 +139,11 @@
     @apply bg-notepad-accent;
   }
   
-  /* Task completed styling */
   .task-completed {
     @apply text-notepad-dark;
     text-decoration: line-through;
   }
 
-  /* Styling for the dialog */
   .bg-notepad-paper {
     background-color: var(--notepad-paper);
   }
@@ -179,8 +172,17 @@
     background-color: var(--notepad-dark);
   }
   
-  /* Add pointer-events for calendar popup */
   .pointer-events-auto {
     pointer-events: auto !important;
+  }
+}
+
+@layer components {
+  .dark {
+    --notepad-paper: #1A1F2C;
+    --notepad-line: #403E43;
+    --notepad-ink: #C8C8C9;
+    --notepad-dark: #6E6C67;
+    --notepad-accent: #7E69AB;
   }
 }
