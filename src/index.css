@@ -1,138 +1,120 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 60 33% 94%;
-    --foreground: 30 10% 23%;
-
-    --card: 60 33% 94%;
-    --card-foreground: 30 10% 23%;
-
-    --popover: 60 33% 94%;
-    --popover-foreground: 30 10% 23%;
-
-    --primary: 30 23% 83%;
-    --primary-foreground: 30 10% 23%;
-
-    --secondary: 30 10% 66%;
-    --secondary-foreground: 30 10% 23%;
-
-    --muted: 30 10% 90%;
-    --muted-foreground: 30 10% 40%;
-
-    --accent: 30 23% 83%;
-    --accent-foreground: 30 10% 23%;
-
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 33% 94%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 30 10% 83%;
-    --input: 30 10% 83%;
-    --ring: 30 10% 23%;
-
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
     --radius: 0.5rem;
-
-    --sidebar-background: 60 33% 94%;
-    --sidebar-foreground: 30 10% 23%;
-    --sidebar-primary: 30 23% 83%;
-    --sidebar-primary-foreground: 30 10% 23%;
-    --sidebar-accent: 30 10% 90%;
-    --sidebar-accent-foreground: 30 10% 23%;
-    --sidebar-border: 30 10% 83%;
-    --sidebar-ring: 30 10% 23%;
   }
-
+ 
   .dark {
-    --background: 30 10% 23%;
-    --foreground: 60 33% 94%;
-
-    --card: 30 10% 23%;
-    --card-foreground: 60 33% 94%;
-
-    --popover: 30 10% 23%;
-    --popover-foreground: 60 33% 94%;
-
-    --primary: 30 23% 43%;
-    --primary-foreground: 60 33% 94%;
-
-    --secondary: 30 10% 33%;
-    --secondary-foreground: 60 33% 94%;
-
-    --muted: 30 10% 30%;
-    --muted-foreground: 30 10% 70%;
-
-    --accent: 30 23% 43%;
-    --accent-foreground: 60 33% 94%;
-
-    --destructive: 0 62.8% 40.6%;
-    --destructive-foreground: 60 33% 94%;
-
-    --border: 30 10% 33%;
-    --input: 30 10% 33%;
-    --ring: 60 33% 84%;
-    
-    --sidebar-background: 30 10% 23%;
-    --sidebar-foreground: 60 33% 94%;
-    --sidebar-primary: 30 23% 43%;
-    --sidebar-primary-foreground: 60 33% 94%;
-    --sidebar-accent: 30 10% 30%;
-    --sidebar-accent-foreground: 60 33% 94%;
-    --sidebar-border: 30 10% 33%;
-    --sidebar-ring: 60 33% 84%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
-
+ 
 @layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-notepad-paper text-notepad-ink font-special-elite;
-    background-image: repeating-linear-gradient(transparent, transparent 31px, #cfcfc0 31px, #cfcfc0 32px);
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom theme styles for the notepad app */
+@layer components {
+  /* Color variables for the notepad theme */
+  :root {
+    --notepad-paper: #f8f4e5;
+    --notepad-line: #c2bfb5;
+    --notepad-ink: #333;
+    --notepad-dark: #6e6c67;
+    --notepad-accent: #f3d250;
   }
   
-  /* Notepad paper styles */
+  /* General notepad paper background and font */
   .notepad-paper {
-    @apply bg-notepad-paper shadow-md border-t-4 border-t-notepad-dark;
-    position: relative;
-    padding: 32px 32px 32px 60px;
-    background-image: linear-gradient(90deg, #a89f91 0%, #a89f91 1px, transparent 1px, transparent 100%);
-    background-size: 30px 100%;
-    background-position: 30px 0;
-    background-repeat: repeat-y;
+    @apply bg-[var(--notepad-paper)] text-[var(--notepad-ink)] font-serif;
   }
   
-  .notepad-paper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 100%;
-    background-color: #e5d8c5;
-    border-right: 1px solid #a89f91;
-  }
-  
-  /* Torn paper effect */
+  /* Torn edge effect for the notepad */
   .torn-edge {
     position: relative;
-    overflow: hidden;
+    padding: 2rem;
   }
   
+  .torn-edge::before,
   .torn-edge::after {
     content: '';
     position: absolute;
-    bottom: -8px;
     left: 0;
     width: 100%;
-    height: 8px;
-    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 14"%3E%3Cpath fill="%23f5f5dc" d="M0,0v7c0,0,194.6-14,300,0c105.4,14,300,0,300,0v-7H0z"%3E%3C/path%3E%3C/svg%3E');
-    background-repeat: repeat-x;
-    background-position: bottom;
+    height: 20px; /* Adjust height for the size of the torn effect */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20'%3E%3Cpath d='M0,10c100,3.3,200,6.7,300,8,400,4,500-2.7,600-8,700-5.3,800-12,1200-10v10H0V10z' fill='%23f8f4e5'/%3E%3C/svg%3E");
+    background-size: 1200px 20px; /* Adjust size to control the density of the torn effect */
+  }
+  
+  .torn-edge::before {
+    top: 0;
+  }
+  
+  .torn-edge::after {
+    bottom: 0;
+    transform: rotate(180deg);
   }
   
   /* New retro checkbox styling */
@@ -164,21 +146,41 @@
   
   /* Task completed styling */
   .task-completed {
-    @apply line-through text-notepad-dark opacity-70;
+    @apply text-notepad-dark;
+    text-decoration: line-through;
+  }
+
+  /* Styling for the dialog */
+  .bg-notepad-paper {
+    background-color: var(--notepad-paper);
   }
   
-  /* Confetti effect */
-  .confetti-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 100;
+  .border-notepad-dark {
+    border-color: var(--notepad-dark);
   }
   
-  .confetti {
-    @apply absolute w-2 h-2 rounded-sm;
+  .text-notepad-ink {
+    color: var(--notepad-ink);
+  }
+  
+  .border-notepad-line {
+    border-color: var(--notepad-line);
+  }
+  
+  .focus\:border-notepad-dark:focus {
+    border-color: var(--notepad-dark);
+  }
+  
+  .bg-notepad-accent {
+    background-color: var(--notepad-accent);
+  }
+  
+  .hover\:bg-notepad-dark:hover {
+    background-color: var(--notepad-dark);
+  }
+  
+  /* Add pointer-events for calendar popup */
+  .pointer-events-auto {
+    pointer-events: auto !important;
   }
 }
